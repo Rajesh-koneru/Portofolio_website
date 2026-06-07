@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-bg: var(--accent-bg);
+  --color-border-color: var(--border-color);
+  --color-card-bg: var(--card-bg);
+  --color-glow: var(--glow);
+}
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-bg: rgba(37, 99, 235, 0.08);
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --glow: rgba(37, 99, 235, 0.05);
+
+  --bg-track: #f1f5f9;
+  --bg-thumb: #cbd5e1;
+
+  scroll-behavior: smooth;
+}
+
+:root.dark {
+  --bg-primary: #080c18;
+  --bg-secondary: #0e1628;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --accent-bg: rgba(56, 189, 248, 0.1);
+  --border-color: #1e293b;
+  --card-bg: #111a30;
+  --glow: rgba(56, 189, 248, 0.1);
+
+  --bg-track: #080c18;
+  --bg-thumb: #1e293b;
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-thumb);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Typing Caret Animation */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typing-caret {
+  border-right: 3px solid var(--accent);
+  animation: blink 0.75s step-end infinite;
+}
+
+/* Glassmorphism utility class */
+.glass {
+  background: rgba(var(--bg-secondary), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Section Fade In/Up classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tech card and button active scaling */
+.interactive-btn {
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.interactive-btn:hover {
+  transform: translateY(-2px);
+}
+
+.interactive-btn:active {
+  transform: translateY(0);
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  from { width: 0%; }
+}
+
+.progress-bar {
+  animation: progress 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth active menu accent */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  width: 100%;
+}
